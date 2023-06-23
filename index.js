@@ -1,5 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import axios from 'axios';
+import env from './env.json'
 const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent,GatewayIntentBits.GuildMembers] });
 
 client.on('ready', () => {
@@ -32,4 +33,4 @@ client.on('messageCreate', async message => {
   }
 });
 
-client.login('MTAxMjQwNTM2Nzk1Njg0MDU4MQ.GRDe6X.11gNL_qvZ4PuHXIRPG7Q13GWxMuYsoQ6Mi-xFU');
+client.login(env.TOKEN);
