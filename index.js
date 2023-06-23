@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import axios from 'axios';
-import env from './env.json'
+import env from './env.json' assert {type:'json'}
 const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent,GatewayIntentBits.GuildMembers] });
 
 client.on('ready', () => {
