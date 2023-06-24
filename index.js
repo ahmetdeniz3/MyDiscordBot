@@ -1,5 +1,6 @@
 import { AttachmentBuilder, Client, GatewayIntentBits} from 'discord.js';
-import QRCode from 'qrcode'
+import { ChatGPTAPI } from 'chatgpt';
+import QRCode from 'qrcode';
 import axios from 'axios';
 import env from './env.json' assert {type:'json'}
 const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent,GatewayIntentBits.GuildMembers] });
@@ -73,7 +74,16 @@ else if(message.content.split(' ')[0]=='!qr'){
 const sfattach = new AttachmentBuilder(sfbuff, {name:"output.png"});
 message.channel.send({content:message.content.substring(3,message.content.length),files:[sfattach]})
 }
+/*/ elbet birgün param olucak
+else if(message.content.split(' ')[0]=='!soru'){
 
+    const api = new ChatGPTAPI({
+      apiKey: env.OPENAI_API_KEY
+    })
+    const res = await api.sendMessage(message.content.substring(5,message.content.length))
+    message.reply(res.text);
+}
+/*/
 });
 
 client.login(env.TOKEN);
